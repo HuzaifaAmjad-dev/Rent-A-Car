@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   Users,
   Fuel,
@@ -9,15 +10,16 @@ import {
 } from "lucide-react";
 
 interface CarCardProps {
-    id: string;
-    name: string;
-    image: string;
-    price: number;
-    seats: number;
-    transmission: string;
-    fuel: string;
-    onBook?: () => void;
-  }
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  seats: number;
+  transmission: string;
+  fuel: string;
+  bookingHref?: string;
+  onBook?: () => void;
+}
 
 export default function CarCard({
   name,
@@ -26,17 +28,22 @@ export default function CarCard({
   seats,
   transmission,
   fuel,
+  bookingHref,
   onBook,
 }: CarCardProps) {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
       <div className="relative h-56">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover"
-        />
+      <Image
+  src={
+    image && image.trim() !== ""
+      ? image
+      : "/images/car-placeholder.jpg"
+  }
+  alt={name}
+  fill
+  className="object-cover"
+/>
       </div>
 
       <div className="p-6">
@@ -69,13 +76,23 @@ export default function CarCard({
           </div>
         </div>
 
-        <button
-  onClick={onBook}
-  className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3 font-semibold text-white transition hover:bg-accent-hover"
->
-  Book Now
-  <ArrowRight size={18} />
-</button>
+        {bookingHref ? (
+          <Link
+            href={bookingHref}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3 font-semibold text-white transition hover:bg-accent-hover"
+          >
+            Book Now
+            <ArrowRight size={18} />
+          </Link>
+        ) : (
+          <button
+            onClick={onBook}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3 font-semibold text-white transition hover:bg-accent-hover"
+          >
+            Book Now
+            <ArrowRight size={18} />
+          </button>
+        )}
       </div>
     </div>
   );

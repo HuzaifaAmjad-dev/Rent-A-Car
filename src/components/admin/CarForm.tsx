@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createBrowserSupabaseClient } from "@/lib/supabase/cient";
 import { Car } from "@/types/car";
-
+import { uploadCarImage } from "@/lib/upload-image";
 interface Props {
   car?: Car | null;
   onSuccess: () => void;
@@ -18,7 +18,8 @@ export default function CarForm({
   const supabase = createBrowserSupabaseClient();
 
   const [loading, setLoading] = useState(false);
-
+  const [imageFile,setImageFile] =
+  useState<File | null>(null);
   const [form, setForm] = useState({
     name: car?.name ?? "",
     brand: car?.brand ?? "",
@@ -55,27 +56,64 @@ export default function CarForm({
     e: React.FormEvent
   ) {
     e.preventDefault();
-
+  
     setLoading(true);
+  
+    try {
+  
+      let imageUrl = form.image_url;
+  
+  
+      if (imageFile) {
+        imageUrl = await uploadCarImage(
+          imageFile
+        );
+      }
+  
+  
+      const updatedForm = {
+        ...form,
+        image_url: imageUrl,
+      };
+  
+  
+      if (car) {
+  
+        await supabase
+          .from("cars")
+          .update(updatedForm)
+          .eq("id", car.id);
+  
+      } else {
+  
+        await supabase
+          .from("cars")
+          .insert({
+            ...updatedForm,
+            is_deleted:false,
+          });
+  
+      }
+  
+  
+      router.refresh();
+      onSuccess();
+  
+  
+    } catch(error) {
 
-    if (car) {
-      await supabase
-        .from("cars")
-        .update(form)
-        .eq("id", car.id);
-    } else {
-      await supabase
-        .from("cars")
-        .insert({
-          ...form,
-          is_deleted: false,
-        });
-    }
-
+        console.log("UPLOAD ERROR:", error);
+      
+        alert(
+          error instanceof Error
+            ? error.message
+            : "Image upload failed"
+        );
+      
+      }
+  
+  
     setLoading(false);
-
-    router.refresh();
-    onSuccess();
   }
 
   return (
@@ -155,13 +193,16 @@ export default function CarForm({
           className="rounded-xl border border-border px-4 py-3"
         />
 
-        <input
-          name="image_url"
-          placeholder="Image URL"
-          value={form.image_url}
-          onChange={handleChange}
-          className="rounded-xl border border-border px-4 py-3"
-        />
+<input
+  type="file"
+  accept="image/*"
+  onChange={(e)=> {
+    if(e.target.files){
+      setImageFile(e.target.files[0]);
+    }
+  }}
+  className="w-full rounded-xl border p-3"
+/>
       </div>
 
       <textarea

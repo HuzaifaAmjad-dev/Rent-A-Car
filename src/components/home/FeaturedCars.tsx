@@ -4,11 +4,10 @@ import CarCard from "@/components/car-card";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { Car } from "@/types/car";
 
-
 export default async function FeaturedCars() {
-    const supabase = createServerSupabaseClient();
+  const supabase = createServerSupabaseClient();
 
-    const { data: cars, error } = await supabase
+  const { data: cars, error } = await supabase
     .from("cars")
     .select("*")
     .eq("is_deleted", false)
@@ -32,18 +31,16 @@ export default async function FeaturedCars() {
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {(cars as Car[] | null)?.map((car) => (
             <CarCard
-            key={car.id}
-            id={car.id}
-            name={car.name}
-            image={car.image_url}
-            price={Number(car.price_per_day)}
-            seats={car.seats}
-            transmission={car.transmission}
-            fuel={car.fuel_type}
-            onBook={() => {
-                window.location.href = "/booking";
-              }}
-          />
+              key={car.id}
+              id={car.id}
+              name={car.name}
+              image={car.image_url}
+              price={Number(car.price_per_day)}
+              seats={car.seats}
+              transmission={car.transmission}
+              fuel={car.fuel_type}
+              bookingHref="/booking"
+            />
           ))}
         </div>
 
@@ -54,8 +51,7 @@ export default async function FeaturedCars() {
             </h3>
 
             <p className="mt-3 text-muted">
-              Add vehicles from the admin panel to display
-              them here.
+              Add vehicles from the admin panel to display them here.
             </p>
           </div>
         )}

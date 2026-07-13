@@ -22,7 +22,7 @@ export default function CarFormModal({
 }: CarFormModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-3xl">
+      <DialogContent className="max-h-[90vh] overflow-y-auto rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl sm:max-w-3xl">
         <DialogHeader>
           <DialogTitle className="text-2xl">
             {car ? "Edit Car" : "Add New Car"}
@@ -30,9 +30,11 @@ export default function CarFormModal({
         </DialogHeader>
 
         <CarForm
-          car={car}
-          onSuccess={() => onOpenChange(false)}
-        />
+  car={car}
+  onSuccess={() => {
+    onOpenChange(false);
+  }}
+/>
       </DialogContent>
     </Dialog>
   );

@@ -14,7 +14,6 @@ interface BookingFormData {
   phone: string;
   cnic: string;
   pickup_location: string;
-  dropoff_location: string;
   start_date: string;
   end_date: string;
   notes: string;
@@ -34,7 +33,6 @@ export default function BookingForm({
     phone: "",
     cnic: "",
     pickup_location: "",
-    dropoff_location: "",
     start_date: "",
     end_date: "",
     notes: "",
@@ -79,13 +77,10 @@ export default function BookingForm({
       .insert({
         car_id: carId,
         customer_name: formData.customer_name,
-        email: formData.email,
-        phone: formData.phone,
+        customer_email: formData.email,
+        customer_phone: formData.phone,
         cnic: formData.cnic || null,
-        pickup_location:
-          formData.pickup_location,
-        dropoff_location:
-          formData.dropoff_location || null,
+        pickup_location: formData.pickup_location,
         start_date: formData.start_date,
         end_date: formData.end_date,
         total_days: totalDays,
@@ -110,7 +105,6 @@ export default function BookingForm({
       phone: "",
       cnic: "",
       pickup_location: "",
-      dropoff_location: "",
       start_date: "",
       end_date: "",
       notes: "",
@@ -167,13 +161,7 @@ export default function BookingForm({
         className="w-full rounded-xl border border-border px-4 py-3"
       />
 
-      <input
-        name="dropoff_location"
-        placeholder="Dropoff Location"
-        value={formData.dropoff_location}
-        onChange={handleChange}
-        className="w-full rounded-xl border border-border px-4 py-3"
-      />
+      
 
       <div className="grid gap-4 md:grid-cols-2">
         <input
