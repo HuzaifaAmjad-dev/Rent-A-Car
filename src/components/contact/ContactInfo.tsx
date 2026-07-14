@@ -9,13 +9,13 @@ import {
     {
       icon: MapPin,
       title: "Office Address",
-      value: "Islamabad / Rawalpindi, Pakistan",
-      description: "Conveniently located to serve customers across the twin cities.",
+      value: "Rawalpindi, Pakistan",
+      description: "Conveniently located to serve customers.",
     },
     {
       icon: Phone,
       title: "Phone Number",
-      value: "+92 300 1234567",
+      value: "+92 332 6357100",
       description: "Call us anytime for bookings and inquiries.",
     },
     {
@@ -27,8 +27,8 @@ import {
     {
       icon: Clock3,
       title: "Working Hours",
-      value: "Mon - Sun | 9:00 AM - 10:00 PM",
-      description: "We're available every day for your convenience.",
+      value: "Mon - Sun ( 24hrs ) | Friday ( Closed )",
+      description: "We're available for your convenience.",
     },
   ];
   

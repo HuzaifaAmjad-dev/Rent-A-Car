@@ -50,7 +50,7 @@ export default function AboutCTA() {
               </div>
 
               <div>
-                <h3 className="text-3xl font-bold">30+</h3>
+                <h3 className="text-3xl font-bold">100%</h3>
                 <p className="mt-2 text-blue-100">
                   Well-Maintained Vehicles
                 </p>

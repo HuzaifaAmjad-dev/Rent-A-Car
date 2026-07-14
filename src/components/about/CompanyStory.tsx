@@ -12,22 +12,14 @@ export default function CompanyStory() {
         <div className="relative">
           <div className="relative h-[520px] overflow-hidden rounded-3xl">
             <Image
-              src="/images/company-story.jpg"
+              src="/a1.webp"
               alt="Our Fleet"
               fill
               className="object-cover"
             />
           </div>
 
-          <div className="absolute -bottom-8 -right-8 rounded-2xl bg-primary px-8 py-6 text-white shadow-xl">
-            <p className="text-4xl font-bold">
-              5+
-            </p>
-
-            <p className="mt-1">
-              Years of Experience
-            </p>
-          </div>
+          
         </div>
 
         <div>

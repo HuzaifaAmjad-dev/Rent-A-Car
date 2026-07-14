@@ -43,7 +43,7 @@ export default function AboutHero() {
 
         <div className="relative h-[500px] overflow-hidden rounded-3xl">
           <Image
-            src="/images/about-hero.jpg"
+            src="/a1.webp"
             alt="Hasnain Rent a Car"
             fill
             className="object-cover"

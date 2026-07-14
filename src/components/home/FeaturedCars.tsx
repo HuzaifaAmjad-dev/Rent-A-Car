@@ -59,7 +59,7 @@ export default async function FeaturedCars() {
         <div className="mt-12 text-center">
           <Link
             href="/booking"
-            className="inline-flex items-center rounded-xl bg-primary px-8 py-4 font-semibold text-white transition hover:bg-primary-hover"
+            className="inline-flex items-center rounded-xl bg-yellow-400 px-8 py-4 font-semibold text-black transition hover:bg-gray-700-hover"
           >
             View All Vehicles
           </Link>
