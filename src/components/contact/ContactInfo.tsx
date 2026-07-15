@@ -15,7 +15,7 @@ import {
     {
       icon: Phone,
       title: "Phone Number",
-      value: "+92 332 6357100",
+      value: "+92 3359589051",
       description: "Call us anytime for bookings and inquiries.",
     },
     {

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 
 export default function WhatsAppFloat({
-  phoneNumber = "923326357100",
+  phoneNumber = "923359589051",
   message = "Hi! I'm interested in your car rental services.",
 }: {
   phoneNumber?: string;

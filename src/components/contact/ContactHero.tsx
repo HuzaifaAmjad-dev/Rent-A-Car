@@ -24,7 +24,7 @@ export default function ContactHero() {
 
         <div className="relative h-[500px] overflow-hidden rounded-3xl">
           <Image
-            src="/images/contact-hero.jpg"
+            src="/a1.png"
             alt="Contact Hasnain Rent a Car"
             fill
             className="object-cover"
